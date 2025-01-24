@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+    .container h2 {
+      margin-bottom: 20px;
+    }
+    .user-info {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .home-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .home-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome!</h2>
+    <div id="user-info">
+      <!-- Dynamic content will be added here -->
+    </div>
+    <a href="registration.html" class="home-button">Back to Registration</a>
+  </div>
+
+  <script>
+    // Get URL parameters
+    const params = new URLSearchParams(window.location.search);
+
+    // Get form data
+    const name = params.get('name') || 'Guest';
+    const email = params.get('email') || 'No email provided';
+    const gender = params.get('gender') || 'Not specified';
+
+    // Display the submitted data dynamically
+    const userInfoDiv = document.getElementById('user-info');
+    userInfoDiv.innerHTML = `
+      <div class="user-info"><strong>Name:</strong> ${name}</div>
+      <div class="user-info"><strong>Email:</strong> ${email}</div>
+      <div class="user-info"><strong>Gender:</strong> ${gender}</div>
+    `;
+  </script>
+</body>
+</html>
