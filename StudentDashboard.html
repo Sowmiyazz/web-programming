@@ -3,61 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Dashboard</title>
+    <title>Student Dashboard | TCE Ladies Hostel</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin: 50px;
+        font-family: 'Poppins', sans-serif;
         background-color: #f0f2f5;
       }
-      .container {
-        max-width: 400px;
-        margin: auto;
-        padding: 20px;
-        background-color: white;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
+
+      /* Navbar */
+      .navbar {
+        background-color: #004d7f;
+        padding: 15px 30px;
       }
-      h2 {
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+      }
+      .navbar-brand img {
+        height: 50px;
+        margin-right: 15px;
+      }
+      .navbar-brand h3 {
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      .dashboard-container {
+        text-align: center;
+        margin-top: 30px;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        justify-content: center;
+        max-width: 900px;
+        margin: auto;
+      }
+      .icon-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        text-align: center;
+        cursor: pointer;
+      }
+      .icon-box:hover {
+        transform: scale(1.05);
+      }
+      .icon-box img {
+        width: 80px;
+        height: 80px;
+      }
+      .icon-box p {
+        margin-top: 10px;
+        font-weight: bold;
         color: #004d7f;
       }
-      p {
-        font-size: 1.2rem;
-      }
-      .back-btn {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 15px;
-        background-color: #004d7f;
+      .footer {
+        background-color: #333;
         color: white;
-        text-decoration: none;
-        border-radius: 5px;
+        text-align: center;
+        padding: 15px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
       }
     </style>
   </head>
+
   <body>
-    <div class="container">
-      <h2>Welcome to Student Dashboard</h2>
-      <p><strong>Email:</strong> <span id="displayEmail"></span></p>
-      <p><strong>Password:</strong> <span id="displayPassword"></span></p>
-      <a href="StudentLogin.html" class="back-btn">Logout</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="index.html">
+        <img
+          src="https://media.collegedekho.com/media/img/institute/logo/tce_logo.png"
+          alt="Hostel Management Logo"
+        />
+        <h3>TCE LADIES HOSTEL</h3>
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <div class="dashboard-container">
+      <h2>STUDENT DASHBOARD</h2>
+      <div class="grid-container">
+        <a href="menu_viewer.html" class="icon-box">
+          <img src="data:image/png;base64,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" alt="Menu">
+          <p>MENU</p>
+        </a>
+        <div class="icon-box" onclick="alert('Attendance page under development!')">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhZgXZ6RbHnxvzTMHEq1oDmlcUtBDLYYUnOQ&s" alt="Attendance">
+          <p>ATTENDANCE</p>
+        </div>
+        <div class="icon-box" onclick="alert('Complaints page under development!')">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOgAAADZCAMAAAAdUYxCAAAAgVBMVEX///8AAADR0dH39/fv7+96enr7+/vo6Ojy8vL29vbj4+Pf39+7u7vZ2dnLy8vOzs5fX19QUFCYmJiWlpY2NjZWVlaPj49xcXHDw8OgoKBra2unp6eMjIwpKSkvLy+AgIBDQ0NsbGwQEBAcHBw9PT0bGxuxsbEMDAwxMTFISEhbW1vISXrhAAAL6UlEQVR4nN1daWOyvBJ9cG8Fa+3rroVu2vb//8BbRCRA5mSbgNzztSlkJMmcWfPvX6cwmj5tZtOHUdvz8IxwHlxx/NmttmH02G97Sj7w9BFIcJzHL+Fs2v//+cgvMjEFvD7vVvswGnf9I68Vcgr4nseLcDZoe8Z2OOjLecN61vaszTGzkPMPz49tT9wUX3aCBsGp7ZmbIbSVMwj2bc/dCM/2ggabtidvAgc5g+Ch7dnrI8KSrLd7pHzWbU9fHxsk5s8kHTL4jx4xbnv+2tgDOY/XMSN6yKLVyZtgBQS9nTUncsh/bc7dCG9A0NugAT2mM4T/h5bh/TbogR7UmU36Tcswvw0CX7QrRBCcM0F8GwWO5ja+aH88jf5g9OoJELQ4Ubf0oIYpw/Q0FNfgMg41xX0Egoa3UXN6kCeBZOiHO9kMjvGTxj8jG61gsvSYV39yVWcqlTLD+4vSFYBsl9sPBT77HD2cESFgZxcMFafiAvxvlA8C7ClGD2fDk0rMFGv4VYfgP2+/EdiiL/6l/Df41RAzxRY8BCz8m+ZAKigEz2YCzT9rSOiPitbE5DoGGTj+fWToU9RB/vDon3IViZb31LOY46ORnPShgf6nbzDGExRuARmW0geNNYTooTF+5XwylzMIfmRPgr/Y1QJD/u2j7KFsgD8xjU/Jo6Aj5Soo2iXydcIERE8hnuvPAmw9N0fh6t55lBMYwSq81R6GHClXGoucSsHKo6CJvaB11zpyZSbZEECLvPrqbUJfBapqDzhSguAribczvFH8ESPL0FeOj8rjTNVxFZF0khx4d5zZofQ0xGK14M2R4rZwU5TMNuD0+hs56Z0Ovzio6MuRAo96PZR0DNyAGaeP0ZB36SwZ8OYuaNATnod2/DkbAk3eb09yWlMFEYnwQORI+c2GwGf5cqQge0kfwkmJBM24AN4snhwpzmdkBoEfIetgud+MRwpe7SmWZuBTgCiOSnjqpvj+hH/2lK7hQv6I6b26PUnHc2wOBt2SQdAwqtw4Bfw4UrhWrhjTdDCFyg/iBDQjjCC47pADW4mzFznd8mRKEK1IfNpg+MlJYWELGUQHCIobquAnnwq6d8zwJT7X/oyr2nxMcNpNFZSMjpHt5vdkdfPwvwwVe/lpafMQX0TXajIEaptrEK7miTSvnkTiSU6n47EKYtGNJtHmtBpqLWWJ75QJOrFQXWDnnQ4zQaHIOxIUT7OSevSxj3cVb2Hss3qAc+lCQauW2VWoQTTbv8TL5frFc0yUy3ZJAZduOfL60XjpB+epizRgmYElzSc1GlThKIG4W+mD1qM1/oHiQaYADvbSB/V4ttLgM0eh31nYIZ/tZG5ahn9l+KLfIpgObVW19PkE/SVfUhhtwwk5yDfMqCgC7aXMlXXcZmI1jIIYoUe9IqtqOm7brRPls7yJF/RTlnk8+It5aoJtkxIZFr3ga3i6i1oALjcgwYt6d1Pny7V225ZDDR45m8kldgKPf6wDlSoscUOaLdwRHGNCF/jOsOWBu5xtGF4WcDdh7kaHKODqOepMob1jNDhpe/76cFu8XVm4KVx8R91qcGK/TVtxAdljZGuBd4D7laHMDpLDZ/67J0xsGtZ0qAlGgYl55vRB/dS7hKkR3rHeQwJQxUoN7637gRwQ6W/UTm5PAZpG27ef1MQmMdZhSS3szsF+z+3GeFSI+sVvrYz3ewVjvpQwsucsTxY0UVp6yGG7HIL4bMuSgJf87v7pQlJ59bEOPYSJRllUEZaN5p6ts4+j/uFpv/69sohzsnvR7SBiiOh8FQIG/G9sxqcR4bVHy01340LgoprmtzNtnUQIyZG0XTtJnYzTooKug0zltmwzntWTbo4/1f45Lf0mHbOBRco5/1uPj59SBZIFzFel4ctuLd/f0ifKMmTq6vSa0nKMxOXr5fT1hKg06+h6rEp8/rmei0vLtzM+1mIdpsdonmKQyIbmBa7vMzGTh6WLwWgyiDbhab84xPFwOFwPh/HhsFrsT+GmN54wqJt+Ik74Kf+4hCUf5cVRO5GxJQ7vH0Sn7WGeqHwNH5/zQ9qM3f5FYv7sR55A91pdtw/9DCN5UolNH4PR42axNs/ePc/jU8+Cf0rnHf8bXQXLGvir3QBmrvNRtLcQUcRxuQqNvq46BrLQCh/o+6zGYQy6MprhZ7XR/YU1spv2Wl0OdF422ix2rn0Javiaa9WtaDzpqBW2VZuME86KlzLU1rFWK3CtdlnKMhmOcD6Jo2oF6zRwm+vFDhTmMV8xpRRnfA5rlej90fv+dpiD/GkwP3Jprq6FBL6e7PGzvAm2rXAS8uvC5sqclXcE4LlP6jLgwSCrHIBaY6wZpUEmtYL3o4Itsl0HYEeuXXi0ABqekAULMHROzZquN+VLRYagA6eUJxX7jEg9Qa0dxhpgDIo5kPUKmKKTC34oH+/YOsAEhDYlmYoizY48wuTDOWu0FEjkM6CGq9okk7aMdOkYBUBdIW2TS9I/lWePVKUyT8PUj0QUZA4sckkpwwBkczrJHmlEsxSQNMkgv0uikpMmVPW14M9iIVDXMeTeUTv19GlgY5qlQO2gIM9ODZudXPWV87pBzVKgMn8r+peD9K1UmLV3m0WGpDwHsgWhTq4Amf1fPgsa1SwFyjqG9N1oeRJJM1pkyQ1rlgKijiH7rulVWZA6WEwF4qufNIRYQEtmgei1gqErV4rgGmfVuiF2RhOFeKP+//ZDtaBZJLMgl55uMiwpRn5ou3SMYkCuY8hzXzujR/WKVjRLgSSbBe2/1JWT5nYZDWzAG4aR2dSkgtPPnySP7UsLV4srBbhx0TEk/TOosyAVcUoDrS895cP7CGhyk06ApMfr0KpmKbAD9M+k0IJenS6Xu3IipE9M4AM2WLuwx3+TIG0Psx6WnG1sGoZZqUVrnN0dhtXEjt1724Pp7S6tkwJbmN4d1kiMzAeMk5U4W/w1CPP2+8aukueG4moY5qm3xnWRY86GY9awyNM3tMUWnA3HCryZDZde06WA2Qd69WSOj8zOCpusW7N5p2raQyjmaEhdrCr+TWKfF97lId1obXZPjl1DXQM7JUtx8JA/tjVbKHbFfAYNezLLyINvMHUWGBxylqVm2rdqXhMcPLCpy57TVtC2rb11v9A59xdbSgOQLS3d9FjbXu26a/fmjIJXudngmk+gexGbdZmOnnuo8Iuzh8BzI/rNcCKm0PslixOAnQTmp6heX0WHkludxwsbg50E3rwFWseFvZw6a1EMRbKTwCLNViPL2qXBgcYnKiVnM5NAwbjU+A2dOhwovfJlLsJMAsVvpNz/blf1qIhmhVwye5pKVrTKbHTrhKQKKFXsXGYSWIoWqTwBRg76OjApqToumElg2ejCQQLXS6agRVK/jJpVzqq+gBc4uF55DL9R3bXIeWtGLaEU1to5t/sErgxJMRWrJ7AWRQFnnSoPWQ364bJns5LAujFClzKaOujroNeLbLGwksD6C2gHEkPLHmrbSfUWa8qnpPab0uuw1EoTxKlOVMIwRuGkkydIJkdvDEJRE/qZkQRKSTqxN1gam0rnTtTBcJJA+VeSGlQ898DJToAz5bVgJIFEupCMqzH1zJacAGTOEiMJJOJFkmwvtg6RNasX7H0+Qak31AKajBcYVrYpCuWwkUC6d0lFUtaLGkUdc4QtcdhIIFiPPVHJMLet6b9cnQ1LhZeYjQTC94TXCNjXykMDs/EsnKn7G7GRQNVJGv1Np82bX9iutrn77lhMnkAO9uoXTCTw/u+TYCKB99/CjokE3n9ffiYSeBdXaWHwCNq2FBpgIYH+LmzmAwsJ7ELLehYS6OnqeFawkMAu9NJkuVDs7glgCoYi2npU5x7BQALvnwCmYCCB908AU+jmPwE4RnUbguXtPSK8Nj7ng3OFRTfOIobKtm5sUYaa4Q5cP5rBUZN2ZeU6N1LpzuVMjvHgtqdvAJPShhrY75vxCCdi3/bkjeBQC96dHXoBTPNC6MSNzwKseWAnLFERlo6GbtxsXYKVJ7sbZksFFt+0g98zxcCw4sfDNWZNwcT1+X3/4RaEzVqrLdAx7uTuLONhGvUwIv9r9n9ljLHOkkJpUwAAAABJRU5ErkJggg==" alt="Complaints">
+          <p>COMPLAINTS</p>
+        </div>
+        <div class="icon-box" onclick="alert('Room booking page under development!')">
+          <img src="data:image/png;base64,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" alt="Room Booking">
+          <p>ROOM BOOKING</p>
+        </div>
+      </div>
     </div>
 
-    <script>
-      // Function to get URL parameters
-      function getQueryParams() {
-        const params = new URLSearchParams(window.location.search);
-        return {
-          email: params.get("email"),
-          password: params.get("password"),
-        };
-      }
-
-      // Get parameters and display on page
-      const userDetails = getQueryParams();
-      document.getElementById("displayEmail").textContent = userDetails.email || "Not Provided";
-      document.getElementById("displayPassword").textContent = userDetails.password || "Not Provided";
-    </script>
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 TCE Ladies Hostel | All rights reserved.</p>
+    </footer>
   </body>
 </html>

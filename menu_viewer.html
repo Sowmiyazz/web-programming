@@ -3,11 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hostel Menu | TCE Ladies Hostel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Menu Viewer | TCE Ladies Hostel</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
       body {
         font-family: 'Poppins', sans-serif;
@@ -16,6 +27,10 @@
       .navbar {
         background-color: #004d7f;
         padding: 15px 30px;
+      }
+      .navbar-brand {
+        display: flex;
+        align-items: center;
       }
       .navbar-brand img {
         height: 50px;
@@ -46,13 +61,40 @@
     </style>
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="#">
-        <img src="https://media.collegedekho.com/media/img/institute/logo/tce_logo.png" alt="Hostel Management Logo" />
+      <a class="navbar-brand" href="index.html">
+        <img
+          src="https://media.collegedekho.com/media/img/institute/logo/tce_logo.png"
+          alt="Hostel Management Logo"
+        />
         <h3>TCE LADIES HOSTEL</h3>
       </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
     </nav>
-
     <div class="menu-container">
       <h2 class="text-center">Hostel Menu</h2>
       <label for="date-picker">Select Date:</label>
@@ -80,17 +122,15 @@
         { morning: "Uttapam & Chutney", afternoon: "Curd Rice", snacks: "Banana Bajji", dinner: "Veg Fried Rice" }
       ];
 
-      $(document).ready(function () {
-        $('#date-picker').change(function () {
-          const date = new Date($(this).val());
-          const menuIndex = date.getDate() % menuData.length;
-          const menu = menuData[menuIndex];
-          $('#menu-date').text(`Menu for ${date.toDateString()}`);
-          $('#morning').text(menu.morning);
-          $('#afternoon').text(menu.afternoon);
-          $('#snacks').text(menu.snacks);
-          $('#dinner').text(menu.dinner);
-        });
+      document.getElementById('date-picker').addEventListener('change', function () {
+        const date = new Date(this.value);
+        const menuIndex = date.getDate() % menuData.length;
+        const menu = menuData[menuIndex];
+        document.getElementById('menu-date').textContent = `Menu for ${date.toDateString()}`;
+        document.getElementById('morning').textContent = menu.morning;
+        document.getElementById('afternoon').textContent = menu.afternoon;
+        document.getElementById('snacks').textContent = menu.snacks;
+        document.getElementById('dinner').textContent = menu.dinner;
       });
     </script>
   </body>
