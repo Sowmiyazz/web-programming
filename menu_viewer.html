@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hostel Menu | TCE Ladies Hostel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f0f2f5;
+      }
+      .navbar {
+        background-color: #004d7f;
+        padding: 15px 30px;
+      }
+      .navbar-brand img {
+        height: 50px;
+        margin-right: 15px;
+      }
+      .navbar-brand h3 {
+        color: white;
+        font-size: 1.5rem;
+      }
+      .menu-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        font-size: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">
+        <img src="https://media.collegedekho.com/media/img/institute/logo/tce_logo.png" alt="Hostel Management Logo" />
+        <h3>TCE LADIES HOSTEL</h3>
+      </a>
+    </nav>
+
+    <div class="menu-container">
+      <h2 class="text-center">Hostel Menu</h2>
+      <label for="date-picker">Select Date:</label>
+      <input type="date" id="date-picker" class="form-control" />
+      <div id="menu-display" class="mt-4">
+        <h4 id="menu-date"></h4>
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Morning:</strong> <span id="morning"></span></li>
+          <li class="list-group-item"><strong>Afternoon:</strong> <span id="afternoon"></span></li>
+          <li class="list-group-item"><strong>Evening Snacks:</strong> <span id="snacks"></span></li>
+          <li class="list-group-item"><strong>Dinner:</strong> <span id="dinner"></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2025 TCE Ladies Hostel | All rights reserved.</p>
+    </footer>
+
+    <script>
+      const menuData = [
+        { morning: "Idli & Sambar", afternoon: "Veg Biryani", snacks: "Samosa", dinner: "Chapati & Kurma" },
+        { morning: "Dosa & Chutney", afternoon: "Sambar Rice", snacks: "Pakora", dinner: "Pulao & Raita" },
+        { morning: "Pongal & Vada", afternoon: "Lemon Rice", snacks: "Murukku", dinner: "Poori & Aloo Masala" },
+        { morning: "Uttapam & Chutney", afternoon: "Curd Rice", snacks: "Banana Bajji", dinner: "Veg Fried Rice" }
+      ];
+
+      $(document).ready(function () {
+        $('#date-picker').change(function () {
+          const date = new Date($(this).val());
+          const menuIndex = date.getDate() % menuData.length;
+          const menu = menuData[menuIndex];
+          $('#menu-date').text(`Menu for ${date.toDateString()}`);
+          $('#morning').text(menu.morning);
+          $('#afternoon').text(menu.afternoon);
+          $('#snacks').text(menu.snacks);
+          $('#dinner').text(menu.dinner);
+        });
+      });
+    </script>
+  </body>
+</html>

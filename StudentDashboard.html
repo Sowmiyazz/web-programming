@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 50px;
+        background-color: #f0f2f5;
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h2 {
+        color: #004d7f;
+      }
+      p {
+        font-size: 1.2rem;
+      }
+      .back-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #004d7f;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Welcome to Student Dashboard</h2>
+      <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+      <p><strong>Password:</strong> <span id="displayPassword"></span></p>
+      <a href="StudentLogin.html" class="back-btn">Logout</a>
+    </div>
+
+    <script>
+      // Function to get URL parameters
+      function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+          email: params.get("email"),
+          password: params.get("password"),
+        };
+      }
+
+      // Get parameters and display on page
+      const userDetails = getQueryParams();
+      document.getElementById("displayEmail").textContent = userDetails.email || "Not Provided";
+      document.getElementById("displayPassword").textContent = userDetails.password || "Not Provided";
+    </script>
+  </body>
+</html>
